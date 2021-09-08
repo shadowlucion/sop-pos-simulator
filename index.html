@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+
+	<title>SOP AND POS</title>
+
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="app stop-scrolling">
+
+
+	<div class="sop parent" id="sop">
+		<!-- Slideshow container -->
+		<h1 class="heading">SUM OF PRODUCT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn" href="#pos" id="" style="margin-right:-200px;">next</a></h1>
+
+
+
+
+
+		<div class="block-parent">
+
+			<div class="block-child" id="block1" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<img src="./images/and1.png" alt="" draggable="true" ondragstart="drag(event)" id="and1">
+			</div>
+			<div class="block-child" id="block2" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<img src="./images/and2.png" alt="" draggable="true" id="and2" ondragstart="drag(event)">
+			</div>
+			<div class="block-child" id="block3" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<img src="./images/or1.png" alt="" draggable="true" id="or1" ondragstart="drag(event)">
+			</div>
+			<div class="block-child" id="block4" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<img src="./images/not1.png" alt="" draggable="true" id="not1" ondragstart="drag(event)">
+			</div>
+
+		</div>
+
+		<div class="picture">
+			<img src="./images/sop.png">
+			<input type="number" min=0 max=1 step=1  class="input btna" id="qi1" value="0">
+			<input type="number" min=0 max=1 step=1  class="input btnb" id="qi2" value="0">
+			<input type="number" min=0 max=1 step=1  class="input btnc" id="qi3" value="0">
+			<input type="number" min=0 max=1 step=1  class="input btnd" id="qif"  disabled>
+
+			<div class="sp sp1"></div>
+			<div class="sp sp2"></div>
+			<div class="sp sp3"></div>
+			<div class="sp sp4"></div>
+
+			<div class="drop drop1" id="sop1" ondrop="drop(event)" ondragover="allowDrop(event)">
+			</div>
+
+			<div class="drop drop2" id="sop2" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+			</div>
+			<div class="drop drop3" id="sop3" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+			</div>
+			<div class="drop drop4" id="sop4" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+			</div>
+
+			<button class="btn btn1" id="sopchecker" onclick="validate();">Validate</button>
+
+			<div class="showres" id="showres"></div>
+
+			<!--			<button type="button" class="btn btn-primary" id="sopchecker">Primary</button>-->
+			<!--
+			<button class="btn btn-secondary" id="info" disabled >Expression Of SOP:(A*B)+(!A*C)</button>
+	   -->
+
+			<div id="info" >SOP:(A*B)+(A'*C)</div>
+			<div id="userinfo"></div>
+			<div id="truthtable">Truth table</div>
+
+			<button id="inputchecker" onclick="quizcheckerfun()" class="inpcheckbtn">Check</button>
+
+			<div class="tab">
+				<table style="position: absolute;text-align: center;" >
+					<tr>
+						<th>A</th>
+						<th>B</th>
+						<th>C</th>
+						<th>F</th>
+					</tr>
+					<tr id="1000" class="tabclr">
+						<td>0</td>
+						<td>0</td>
+						<td>0</td>
+						<td>0</td>
+					</tr>
+					<tr id="1111" class="tabclr">
+						<td>1</td>
+						<td>1</td>
+						<td>1</td>
+						<td>1</td>
+					</tr>
+					<tr id="1011" class="tabclr">
+						<td>0</td>
+						<td>1</td>
+						<td>1</td>
+						<td>1</td>
+					</tr>
+					<tr id="1101" class="tabclr">
+						<td>1</td>
+						<td>0</td>
+						<td>1</td>
+						<td>0</td>
+					</tr>
+					<tr id="1110" class="tabclr">
+						<td>1</td>
+						<td>1</td>
+						<td>0</td>
+						<td>1</td>
+					</tr>
+					<tr id="1100" class="tabclr">
+						<td>1</td>
+						<td>0</td>
+						<td>0</td>
+						<td>0</td>
+					</tr >
+					<tr id="1010" class="tabclr">
+						<td>0</td>
+						<td>1</td>
+						<td>0</td>
+						<td>0</td>
+					</tr>
+					<tr id="1001" class="tabclr">
+						<td>0</td>
+						<td>0</td>
+						<td>1</td>
+						<td>1</td>
+					</tr>
+
+				</table>
+			</div>
+		</div>
+
+		<!--
+<div class="quiz">
+	<div class="quiz__head">SOP Table</div>
+	<div class="input">
+
+		<label class="label">
+			A
+			<input type="number" min=0 max=1 step=1 oninput="" class="input" id="qi1" value="0">
+		</label>
+		<label class="label">
+			B
+			<input type="number" min=0 max=1 value=0 oninput="" class="input" id="qi2" value="0">
+		</label>
+		<label class="label">
+			C
+			<input type="number" min=0 max=1 step=1 oninput="" class="input" id="qi3" value="0">
+		</label>
+	</div>
+	<div class="output">
+		<div >Output</div>
+		<label class="label">
+			<span id="qi4"></span>
+
+		</label>
+	</div>
+	<button class="btn" id="quizchecker" onclick="quizcheckerfun()">Press</button>
+
+
+
+
+
+</div>
+-->
+
+	</div>
+
+
+	<!--Second Section-->
+	<div class="pos parent " id="pos">
+		<h1 class="heading"><a class="btn" href="#sop" id=""style="margin-left: -200px;">prev</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRODUCT OF SUM</h1>
+
+
+
+		<div class="block-parent">
+
+			<div class="block-child " id="ablock1" ondrop="adrop(event)" ondragover="aallowDrop(event)">
+				<img src="./images/and.png" alt="" draggable="true" ondragstart="adrag(event)" id="and">
+			</div>
+			<div class="block-child" id="ablock2" ondrop="adrop(event)" ondragover="aallowDrop(event)">
+				<img src="./images/or.png" alt="" draggable="true" id="or" ondragstart="adrag(event)">
+			</div>
+			<div class="block-child" id="ablock3" ondrop="adrop(event)" ondragover="aallowDrop(event)">
+				<img src="./images/aor.png" alt="" draggable="true" id="aor" ondragstart="adrag(event)">
+			</div>
+			<div class="block-child" id="ablock4" ondrop="adrop(event)" ondragover="aallowDrop(event)">
+				<img src="./images/not.png" alt="" draggable="true" id="not" ondragstart="adrag(event)">
+			</div>
+
+		</div>
+
+
+		<div class="picture">
+			<img src="./images/pos.png">
+			<input type="number" min=0 max=1 step=1  class="input abtna" id="aqi1" value="0">
+			<input type="number" min=0 max=1 step=1  class="input abtnb" id="aqi2" value="0">
+			<input type="number" min=0 max=1 step=1  class="input abtnc" id="aqi3" value="0">
+			<input type="number" min=0 max=1 step=1  class="input abtnd" id="aqif"  disabled>
+
+			<div class="sp asp1">(A+B')</div>
+			<div class="sp asp2">Result</div>
+			<div class="sp asp3">(B')</div>
+			<div class="sp asp4">(A+C)</div>
+
+
+			<div class="drop adrop1" id="asop1" ondrop="adrop(event)" ondragover="aallowDrop(event)">
+			</div>
+			<div class="drop adrop2" id="asop2" ondrop="adrop(event)" ondragover="aallowDrop(event)">
+
+			</div>
+			<div class="drop adrop3" id="asop3" ondrop="adrop(event)" ondragover="aallowDrop(event)">
+
+			</div>
+			<div class="drop adrop4" id="asop4" ondrop="adrop(event)" ondragover="aallowDrop(event)">
+
+			</div>
+
+			<button class="btn btn1"  onclick="avalidate();">Validate</button>
+
+			<div class="ashowres" id="ashowres"></div>
+
+			<!--			<button type="button" class="btn btn-primary" id="sopchecker">Primary</button>-->
+			<!--
+			<button class="btn btn-secondary" id="info" disabled >Expression Of SOP:(A*B)+(!A*C)</button>
+	   -->
+
+			<div id="info" >POS:(A+C)*(A+B')</div>
+			<div id="auserinfo"></div>
+			<div id="truthtable">Truth table</div>
+
+			<button id="ainputchecker" onclick="aquizcheckerfun()" class="ainpcheckbtn">Check</button>
+
+			<div class="atab">
+				<table style="position: absolute;text-align: center;" >
+					<tr>
+						<th>A</th>
+						<th>B</th>
+						<th>C</th>
+						<th>F</th>
+					</tr>
+					<tr id="2000" class="atabclr">
+						<td>0</td>
+						<td>0</td>
+						<td>0</td>
+						<td>0</td>
+					</tr>
+					<tr id="2111" class="atabclr">
+						<td>1</td>
+						<td>1</td>
+						<td>1</td>
+						<td>1</td>
+					</tr>
+					<tr id="2011" class="atabclr">
+						<td>0</td>
+						<td>1</td>
+						<td>1</td>
+						<td>0</td>
+					</tr>
+					<tr id="2101" class="atabclr">
+						<td>1</td>
+						<td>0</td>
+						<td>1</td>
+						<td>1</td>
+					</tr>
+					<tr id="2110" class="atabclr">
+						<td>1</td>
+						<td>1</td>
+						<td>0</td>
+						<td>1</td>
+					</tr>
+					<tr id="2100" class="atabclr">
+						<td>1</td>
+						<td>0</td>
+						<td>0</td>
+						<td>1</td>
+					</tr >
+					<tr id="2010" class="atabclr">
+						<td>0</td>
+						<td>1</td>
+						<td>0</td>
+						<td>0</td>
+					</tr>
+					<tr id="2001" class="atabclr">
+						<td>0</td>
+						<td>0</td>
+						<td>1</td>
+						<td>1</td>
+					</tr>
+
+				</table>
+			</div>
+		</div>
+
+
+
+
+
+<!--
+		<div class="picture">
+			<img src="./images/pos.png">
+			<input type="number" min=0 max=1 step=1  class="input abtna" id="aqi1" value="0">
+			<input type="number" min=0 max=1 step=1  class="input abtnb" id="aqi2" value="0">
+			<input type="number" min=0 max=1 step=1  class="input abtnc" id="aqi3" value="0">
+			<input type="number" min=0 max=1 step=1  class="input abtnd" id="aqif"  disabled>
+			<div class="drop adrop1" id="asop1" ondrop="adrop(event)" ondragover="aallowDrop(event)">
+
+			</div>
+			<div class="drop adrop2" id="asop2" ondrop="adrop(event)" ondragover="aallowDrop(event)">
+
+			</div>
+			<div class="drop adrop3" id="asop3" ondrop="adrop(event)" ondragover="aallowDrop(event)">
+
+			</div>
+			<div class="drop adrop4" id="asop4" ondrop="adrop(event)" ondragover="aallowDrop(event)">
+
+			</div>
+
+			<button class="btn btn1" id="asopchecker" onclick="avalidate();">Validate Model</button>
+
+			<button type="button" class="btn btn-secondary" id="ainfo" disabled>Expression Of POS:(A+C)*(A*!B)</button>
+
+
+
+		</div>
+-->
+
+
+
+
+	</div>
+
+
+</body>
+
+
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+
+<script defer src="js/simulator.js"></script>
+<!--
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> -->
+
+
+</html>
